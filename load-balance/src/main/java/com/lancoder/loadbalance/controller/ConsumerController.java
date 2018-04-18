@@ -34,4 +34,9 @@ public class ConsumerController {
         return restTemplate.getForEntity("http://COUNT-WEB/hello",String.class).getBody();
     }
 
+    @RequestMapping(value = "/server/hello",method = RequestMethod.GET)
+    public String serverHello(){
+        return restTemplate.getForEntity("http://COUNT-SERVER/count/server/hello",String.class).getBody();
+    }
+
 }
