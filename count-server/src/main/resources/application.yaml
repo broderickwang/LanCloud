@@ -1,0 +1,17 @@
+
+spring:
+  application:
+    name: count-server
+server:
+  port: 10004
+eureka:
+  instance:
+    prefer-ip-address: true
+#    ip-address: 192.168.2.106
+    hostname: 192.168.2.106
+    port: 1111
+#    instance-id: ${eureka.instance.ip-address}:${server.port}
+    instance-id: ${eureka.instance.hostname}:${server.port}
+  client:
+    service-url:
+      defaultZone: http://${eureka.instance.ip-address}:${eureka.instance.port}/eureka/
