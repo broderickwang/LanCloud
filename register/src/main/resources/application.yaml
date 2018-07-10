@@ -6,7 +6,7 @@ eureka:
   client:
     prefer-ip-address: true
 #    hostname: 192.168.2.103
-    ip-address: 192.168.2.103
+    ip-address: localhost
     register-with-eureka: false     #不注册自己
     fetch-registry: false           #不检索服务
     service-url:

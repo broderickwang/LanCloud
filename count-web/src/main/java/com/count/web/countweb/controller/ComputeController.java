@@ -5,10 +5,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
 /**
  * @project: LanCloud
@@ -33,6 +35,14 @@ public class ComputeController {
         Integer r = a + b;
         LOGGER.info("/add,host:"+instance.getHost()+",service_id:"+instance.getServiceId());
         return r;
+    }
+
+    @RequestMapping(value = "/tUser",method = RequestMethod.GET)
+    public String tUer(){
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<String> responseEntity = restTemplate.getForEntity("http://COUNT-SERVER/tUser?name={1}",String.class,"didi");
+        String body = responseEntity.getBody();
+        return body;
     }
 
 }
