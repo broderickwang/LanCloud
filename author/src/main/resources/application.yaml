@@ -1,9 +1,9 @@
 
 spring:
   application:
-    name: count-server
+    name: author
 server:
-  port: 10004
+  port: 10005
 eureka:
   instance:
     prefer-ip-address: true
