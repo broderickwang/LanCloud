@@ -11,5 +11,11 @@ eureka:
     fetch-registry: false           #不检索服务
     service-url:
       default-zone: http://${eureka.client.ip-address}:${server.port}/eureka
+security:
+  basic:
+    enabled: true
+  user:
+    name: wangcd
+    password: 123456
 
     #http://${eureka.instance.hostname}:${server.port}/eureka
