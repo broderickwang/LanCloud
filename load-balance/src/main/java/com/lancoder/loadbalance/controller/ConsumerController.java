@@ -1,5 +1,6 @@
 package com.lancoder.loadbalance.controller;
 
+import com.lancoder.loadbalance.service.HelloService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -23,6 +24,9 @@ public class ConsumerController {
     @Autowired
     RestTemplate restTemplate;
 
+    @Autowired
+    HelloService helloService;
+
     @RequestMapping(value = "/ribbon-consumer",method = RequestMethod.GET)
     public String add(){
         int a = 0;
@@ -36,7 +40,8 @@ public class ConsumerController {
 
     @RequestMapping(value = "/server/hello",method = RequestMethod.GET)
     public String serverHello(){
-        return restTemplate.getForEntity("http://COUNT-SERVER/count/server/hello",String.class).getBody();
+//        return restTemplate.getForEntity("http://COUNT-SERVER/count/server/hello",String.class).getBody();
+        return helloService.helloService();
     }
 
 }
