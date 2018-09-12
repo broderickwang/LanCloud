@@ -14,8 +14,12 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/count/server/")
 public class HelloController {
 
-    @RequestMapping(value = "/hello",method = RequestMethod.GET)
+//    @RequestMapping(value = "/hello",method = RequestMethod.GET)
+    @GetMapping("/hello")
     public String hello(){
         return "Hello,this is from count server!";
     }
+
+//    @RequestMapping
+
 }
