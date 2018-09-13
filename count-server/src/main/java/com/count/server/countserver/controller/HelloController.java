@@ -1,5 +1,6 @@
 package com.count.server.countserver.controller;
 
+import com.count.server.countserver.domain.User;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -20,6 +21,14 @@ public class HelloController {
         return "Hello,this is from count server!";
     }
 
-//    @RequestMapping
+    @GetMapping("/getUser")
+    public User getUser(@RequestHeader String name,@RequestHeader Integer age){
+        return new User(name,age);
+    }
+
+    @PostMapping("/user/str")
+    public String getU(@RequestBody User user){
+        return user.toString();
+    }
 
 }

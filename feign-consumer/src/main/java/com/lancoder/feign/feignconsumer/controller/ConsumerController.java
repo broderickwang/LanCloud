@@ -1,10 +1,10 @@
 package com.lancoder.feign.feignconsumer.controller;
 
+import com.lancoder.feign.feignconsumer.domain.User;
 import com.lancoder.feign.feignconsumer.service.HelloService;
+import com.lancoder.feign.feignconsumer.service.RefactorHelloService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -22,8 +22,31 @@ public class ConsumerController {
     @Autowired
     HelloService helloService;
 
+
+    @Autowired
+    RefactorHelloService refactorHelloService;
+
     @GetMapping("/feign-consumer")
     public String helloConsumer(){
         return helloService.hello();
+    }
+
+    @GetMapping("/feign-getUser")
+    public User getUser(){
+        return helloService.getUser("wangchengda",28);
+    }
+
+    @GetMapping("/feign-user/str")
+    public String userStr(){
+        return helloService.getU(new User("xianliwei",28));
+    }
+
+    @GetMapping("/feign-user/serive/api")
+    public String helloConsumer2(){
+        StringBuffer stringBuffer = new StringBuffer();
+        stringBuffer.append(refactorHelloService.Hello("LanCoder")+"\n");
+        stringBuffer.append(refactorHelloService.hello("LanCoder",28)+"\n");
+        stringBuffer.append(refactorHelloService.hello(new com.lancoder.service.api.serviceapi.dto.User("Hannan",28)));
+        return stringBuffer.toString();
     }
 }
