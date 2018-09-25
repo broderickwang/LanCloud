@@ -2,6 +2,8 @@
 spring:
   application:
     name: feign-consumer
+  thymeleaf:
+      mode: LEGACYHTML5
 server:
   port: 10005
 eureka:
